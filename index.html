@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מאור מנאי – אקדמיה להנדסאי חשמל ואלקטרוניקה</title>
+<meta name="description" content="קורס תורת החשמל, שיעורים פרטיים והכנה למבחני ועדה עם מאור מנאי – מהנדס חשמל ומרצה. הדרך להצלחה מ-0 ל-100.">
+<meta property="og:title" content="מאור מנאי – אקדמיה להנדסאי חשמל ואלקטרוניקה">
+<meta property="og:description" content="תורת החשמל מ-0 ל-100: קורס דיגיטלי, שיעורים פרטיים והכנה למבחני ועדה.">
+<meta property="og:image" content="images/og.jpg">
+<meta name="theme-color" content="#010612">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%233a8dff'/%3E%3Cpath d='M13 3 5 14h6l-1 7 8-11h-6z' fill='%23010612'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#010612}
+a{color:#3a8dff}a:hover{color:#ffc83d}
+.ans{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px;padding:0 14px 0 26px;border-radius:18px;border:2px solid rgba(37,122,253,.35);background:#03112e;color:#f5f8ff;font:800 34px Heebo,sans-serif;cursor:pointer;width:100%}
+.ans:hover{border-color:#3a8dff}
+.ans.ok{background:#32d74b;color:#010612;border-color:#32d74b}
+.ans.bad{background:#2a1708;border-color:#ffa94d;color:#ffd2a6}
+.ans .k{flex:none;width:54px;height:54px;border-radius:12px;background:#3a8dff;color:#010612;display:flex;align-items:center;justify-content:center;font-size:30px}
+.ans.ok .k{background:#010612;color:#32d74b}
+details{border-bottom:1px solid rgba(244,255,248,.14);padding:22px 0}
+summary{cursor:pointer;font-weight:800;font-size:22px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:#32d74b;font-size:28px;line-height:1}
+details[open] summary::after{content:"–"}
+input,select{font:500 18px Heebo,sans-serif}
+.nav-burger{display:none}
+@media (max-width:1100px){
+.nav-links,.nav-cta{display:none!important}
+.nav-burger{display:flex!important}
+.hero{position:relative;min-height:960px;align-items:flex-end!important;padding:0 20px 36px!important;overflow:hidden}
+.hero-media{position:absolute!important;inset:0;max-width:none!important;margin:0!important;z-index:0}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,6,18,0) 0%,rgba(1,6,18,0) 44%,rgba(1,6,18,.8) 62%,#010612 80%),linear-gradient(90deg,#010612 0%,rgba(1,6,18,0) 14%,rgba(1,6,18,0) 86%,#010612 100%)}
+.photo-wrap{width:92%;max-width:440px;margin:0 auto}
+.bigchip{overflow:visible}
+.hero-media::after{background:linear-gradient(180deg,rgba(1,6,18,0) 0%,rgba(1,6,18,0) 50%,rgba(1,6,18,.8) 64%,#010612 80%)!important}
+.hero-img{width:100%!important;height:auto!important}
+.eq{font-size:11px!important}
+.hero-bg{border-radius:0!important}
+.hero-stick{display:none!important}
+.hero-text{position:relative;z-index:2;flex:1 1 100%!important}
+.hero-ctas a{font-size:16px!important;padding-left:8px!important;padding-right:8px!important}
+}
+@keyframes eq{0%,100%{opacity:0}6%,38%{opacity:.7}46%{opacity:0}}
+.eq{position:absolute;opacity:0;animation:eq 12s ease-in-out infinite both;text-shadow:0 0 12px currentColor;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.eq{animation:none}.eq{opacity:.4}}
+@keyframes spin{to{transform:translateX(-50%) rotate(360deg)}}
+@keyframes spinr{to{transform:translateX(-50%) rotate(-360deg)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(37,122,253,.45),inset 0 0 30px rgba(37,122,253,.25)}50%{box-shadow:0 0 70px rgba(37,122,253,.85),inset 0 0 50px rgba(37,122,253,.45)}}
+@keyframes wave{0%{transform:translateX(-50%) scale(1);opacity:.7}100%{transform:translateX(-50%) scale(1.35);opacity:0}}
+.ring-spin{animation:spin 9s linear infinite}
+.ring-spin-rev{animation:spinr 40s linear infinite}
+.ring-pulse{animation:pulse 3.2s ease-in-out infinite}
+.ring-wave{animation:wave 3.2s ease-out infinite}
+@media (prefers-reduced-motion:reduce){.ring-spin,.ring-spin-rev,.ring-pulse,.ring-wave{animation:none}.ring-wave{display:none}}
+.ring-arcs{animation:spin 6s linear infinite}
+.ring-ticks{animation:spinr 80s linear infinite}
+.ring-outer{animation:spin 24s linear infinite}
+@media (prefers-reduced-motion:reduce){.ring-arcs,.ring-ticks,.ring-outer{animation:none}}
+@keyframes tpulse{0%{stroke-dashoffset:8;opacity:0}10%{opacity:1}85%{opacity:1}100%{stroke-dashoffset:-100;opacity:0}}
+@keyframes mcore{0%,100%{fill:rgba(58,141,255,.25)}50%{fill:#9adcff}}
+.tpulse{opacity:0;animation:tpulse 2.6s ease-in-out infinite}
+.mcore{animation:mcore 2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.tpulse,.mcore{animation:none}}
+@keyframes dotswave{0%{-webkit-mask-size:0% 0%;mask-size:0% 0%;opacity:1}100%{-webkit-mask-size:260% 260%;mask-size:260% 260%;opacity:0}}
+.dots-wave{-webkit-mask-image:radial-gradient(circle,transparent 40%,#000 48%,transparent 56%);mask-image:radial-gradient(circle,transparent 40%,#000 48%,transparent 56%);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:50% 45%;mask-position:50% 45%;filter:drop-shadow(0 0 4px #9adcff);animation:dotswave 3.6s ease-out infinite}
+@media (prefers-reduced-motion:reduce){.dots-wave{display:none}}
+.hero-text::before{content:"";position:absolute;inset:-60px -80px;background:radial-gradient(closest-side,rgba(1,6,18,.82),rgba(1,6,18,.55) 60%,rgba(1,6,18,0));z-index:-1;pointer-events:none}
+@keyframes trail{0%{stroke-dasharray:6 100;stroke-dashoffset:6}100%{stroke-dasharray:6 100;stroke-dashoffset:-100}}
+.trail{stroke-dasharray:6 100;animation:trail 6s linear infinite}
+@media (prefers-reduced-motion:reduce){.electrons{display:none}}
+@media (min-width:1101px){.hero{flex-wrap:nowrap!important}.hero-text{flex:1 1 0!important}.hero-media{flex:0 0 440px!important}}
+@media (max-width:1100px){.site-header{flex-wrap:nowrap!important;padding:16px 16px!important;gap:10px!important}.logo{min-width:0;font-size:20px!important}.logo>span:first-child{flex:none}.nav-burger{flex:none}}
+@media (max-width:600px){
+#curriculum [style*="minmax(260px"]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+#curriculum [style*="minmax(260px"]>div{padding:12px!important;gap:10px!important;flex-direction:column;align-items:flex-start!important}
+#curriculum [style*="minmax(260px"]>div>span{width:36px!important;height:36px!important;font-size:16px!important}
+#curriculum [style*="minmax(260px"]>div>div{font-size:15px!important;align-self:auto!important}
+#about p{font-size:18px!important;line-height:1.7!important}
+.ans{font-size:28px!important;padding:0 10px 0 16px!important;min-height:66px!important}
+.ans .k{width:44px!important;height:44px!important;font-size:24px!important}
+#quiz a[href="#tracks"]{font-size:clamp(14px,4.3vw,18px)!important;white-space:nowrap;padding:14px 10px!important}
+#quiz>div{padding:18px 14px!important;border-radius:24px!important}
+#quiz [style*="grid-template-columns: repeat(2"]{gap:10px!important}
+.ans{font-size:clamp(20px,6vw,26px)!important;padding:0 8px 0 10px!important;gap:6px!important;min-height:60px!important}
+.ans .k{width:clamp(32px,10vw,42px)!important;height:clamp(32px,10vw,42px)!important;font-size:clamp(18px,5.5vw,22px)!important}
+.hero-ctas{gap:8px!important}
+#tracks{padding-top:48px!important;padding-bottom:48px!important}
+#tracks h2{font-size:clamp(26px,8vw,34px)!important;white-space:nowrap}
+#tracks>p{margin-bottom:24px!important}
+#tracks [style*="minmax(300px"]{grid-template-columns:1fr!important;gap:14px!important}
+#tracks [style*="minmax(300px"]>div{padding:20px 18px!important;gap:10px!important;border-radius:20px!important}
+#tracks h3{font-size:22px!important}
+#reviews{padding-top:48px!important;padding-bottom:48px!important}
+#reviews h2{font-size:clamp(26px,8vw,34px)!important;margin-bottom:22px!important;white-space:nowrap}
+#reviews [style*="minmax(300px"]{grid-template-columns:1fr!important;gap:14px!important}
+#reviews figure{padding:20px 18px!important;border-radius:18px!important}
+#reviews blockquote{font-size:16px!important;line-height:1.65!important;margin:6px 0 14px!important}
+#reviews figure>div{font-size:38px!important}
+#tracks [style*="minmax(300px"]>div>p{font-size:15px!important}
+#tracks [style*="font-size: 34px; font-weight: 900"]{font-size:28px!important}
+#tracks [style*="minmax(300px"] a{padding:12px!important;font-size:17px!important}
+.hero-ctas a{font-size:clamp(13px,4vw,16px)!important;padding:14px 6px!important}
+#curriculum>p{line-height:1.5}
+}
+</style>
+
+<style>[hidden]{display:none!important} html{scroll-behavior:smooth}</style>
+</head>
+<body>
+
+
+<div style="font-family: Heebo, sans-serif; color: #f5f8ff; background: radial-gradient(900px 600px at 85% 0%, rgba(37,122,253,.28), transparent 70%), radial-gradient(800px 500px at 0% 100%, rgba(37,122,253,.10), transparent 70%), linear-gradient(rgba(37,122,253,.06) 1px, transparent 1px) 0 0 / 48px 48px, linear-gradient(90deg, rgba(37,122,253,.06) 1px, transparent 1px) 0 0 / 48px 48px, #010612; min-height: 100vh">
+
+<!-- NAV -->
+<header class="site-header" style="max-width: 1200px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" class="logo" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #f5f8ff; font-weight: 900; font-size: 24px">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #3a8dff; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="#010612"></path></svg></span>
+<span style="display: flex; flex-direction: column; line-height: 1.1">מאור מנאי<span style="font-size: 13px; font-weight: 500; color: #ffc83d; white-space: nowrap">אקדמיה להנדסאי חשמל ואלקטרוניקה</span></span>
+</a>
+<nav class="nav-links" style="display: flex; flex-wrap: wrap; gap: 22px; font-size: 17px; font-weight: 500">
+<a href="#about" style="color: #c0d2f1; text-decoration: none">מי אני</a>
+<a href="#tracks" style="color: #c0d2f1; text-decoration: none">מסלולים</a>
+<a href="#curriculum" style="color: #c0d2f1; text-decoration: none">תוכנית לימודים</a>
+<a href="#quiz" style="color: #c0d2f1; text-decoration: none">חידת חשמל</a>
+<a href="#faq" style="color: #c0d2f1; text-decoration: none">שאלות נפוצות</a>
+</nav>
+<a href="#contact" class="nav-cta" style="background: #ffc83d; color: #010612; text-decoration: none; font-weight: 800; font-size: 17px; padding: 12px 22px; border-radius: 12px; min-height: 44px; box-sizing: border-box; display: flex; align-items: center">דברו איתי</a>
+<button type="button" class="nav-burger" aria-label="פתיחת תפריט" data-toggle-menu style="width: 48px; height: 48px; border-radius: 12px; border: 2px solid rgba(37,122,253,.5); background: #03112e; cursor: pointer; align-items: center; justify-content: center; padding: 0">
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="#3a8dff" stroke-width="2.4" stroke-linecap="round" fill="none"></path></svg>
+</button>
+</header>
+<div id="menu" hidden>
+<div data-close-menu aria-hidden="true" style="position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 50"></div>
+<aside aria-label="תפריט" style="position: fixed; top: 0; bottom: 0; right: 0; width: min(82vw, 340px); background: #020c22; border-left: 2px solid #3a8dff; box-shadow: -20px 0 60px rgba(0,0,0,.6); z-index: 51; padding: 22px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; font-family: Heebo, sans-serif">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px">
+<span style="font-weight: 900; font-size: 22px; color: #f5f8ff">מאור מנאי</span>
+<button type="button" aria-label="סגירת תפריט" data-close-menu style="width: 44px; height: 44px; border-radius: 12px; border: 0; background: rgba(37,122,253,.12); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="#3a8dff" stroke-width="2.4" stroke-linecap="round" fill="none"></path></svg></button>
+</div>
+<a href="#about" data-close-menu style="color: #f5f8ff; text-decoration: none; font-weight: 700; font-size: 20px; padding: 14px 6px; border-bottom: 1px solid rgba(244,255,248,.1)">מי אני</a>
+<a href="#tracks" data-close-menu style="color: #f5f8ff; text-decoration: none; font-weight: 700; font-size: 20px; padding: 14px 6px; border-bottom: 1px solid rgba(244,255,248,.1)">מסלולים</a>
+<a href="#curriculum" data-close-menu style="color: #f5f8ff; text-decoration: none; font-weight: 700; font-size: 20px; padding: 14px 6px; border-bottom: 1px solid rgba(244,255,248,.1)">תוכנית לימודים</a>
+<a href="#quiz" data-close-menu style="color: #f5f8ff; text-decoration: none; font-weight: 700; font-size: 20px; padding: 14px 6px; border-bottom: 1px solid rgba(244,255,248,.1)">חידת חשמל</a>
+<a href="#faq" data-close-menu style="color: #f5f8ff; text-decoration: none; font-weight: 700; font-size: 20px; padding: 14px 6px; border-bottom: 1px solid rgba(244,255,248,.1)">שאלות נפוצות</a>
+<a href="#contact" data-close-menu style="margin-top: 18px; background: #ffc83d; color: #010612; text-decoration: none; text-align: center; font-weight: 800; font-size: 19px; padding: 15px; border-radius: 14px">דברו איתי</a>
+<a href="https://wa.me/972537107787" style="border: 2px solid #3a8dff; color: #3a8dff; text-decoration: none; text-align: center; font-weight: 800; font-size: 19px; padding: 13px; border-radius: 14px">וואטסאפ</a>
+</aside>
+</div>
+
+<!-- HERO -->
+<section id="top" class="hero" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 24px 24px 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 32px">
+<div class="dots" aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: radial-gradient(rgba(154,220,255,.75) 1.6px, transparent 2.2px); background-size: 22px 22px; background-position: center; -webkit-mask-image: radial-gradient(55% 60% at 50% 45%, #000 25%, transparent 85%); mask-image: radial-gradient(55% 60% at 50% 45%, #000 25%, transparent 85%)"></div>
+<div class="dots-wave" aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: radial-gradient(#ffffff 2px, transparent 2.8px); background-size: 22px 22px; background-position: center"></div>
+<svg class="electrons" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; -webkit-mask-image: radial-gradient(60% 65% at 50% 45%, #000 30%, transparent 90%); mask-image: radial-gradient(60% 65% at 50% 45%, #000 30%, transparent 90%)"><svg x="50%" y="50%" overflow="visible"><path d="M-440 -220 L-308 -220 L-308 -88 L-242 -88 L-242 -22 L-154 -22 L-154 44" fill="none" stroke="#32d74b" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M-440 -220 L-308 -220 L-308 -88 L-242 -88 L-242 -22 L-154 -22 L-154 44" fill="none" stroke="#32d74b" stroke-width="2.4" stroke-linecap="round" style="animation-duration:6.4s;animation-delay:1.6s;filter:drop-shadow(0 0 4px #32d74b)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #32d74b) drop-shadow(0 0 10px #32d74b)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#32d74b">e⁻</text><animateMotion dur="6.4s" begin="1.6s" repeatCount="indefinite" path="M-440 -220 L-308 -220 L-308 -88 L-242 -88 L-242 -22 L-154 -22 L-154 44" calcMode="linear"></animateMotion></g><path d="M396 -242 L396 -88 L308 -88 L308 -154 L176 -154 L176 -66 L286 -66" fill="none" stroke="#ffc83d" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M396 -242 L396 -88 L308 -88 L308 -154 L176 -154 L176 -66 L286 -66" fill="none" stroke="#ffc83d" stroke-width="2.4" stroke-linecap="round" style="animation-duration:7.1s;animation-delay:2.9s;filter:drop-shadow(0 0 4px #ffc83d)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #ffc83d) drop-shadow(0 0 10px #ffc83d)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#ffc83d">e⁻</text><animateMotion dur="7.1s" begin="2.9s" repeatCount="indefinite" path="M396 -242 L396 -88 L308 -88 L308 -154 L176 -154 L176 -66 L286 -66" calcMode="linear"></animateMotion></g><path d="M-484 132 L-396 132 L-396 -22 L-462 -22 L-462 -132 L-374 -132 L-374 0" fill="none" stroke="#9adcff" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M-484 132 L-396 132 L-396 -22 L-462 -22 L-462 -132 L-374 -132 L-374 0" fill="none" stroke="#9adcff" stroke-width="2.4" stroke-linecap="round" style="animation-duration:6.3s;animation-delay:1.6s;filter:drop-shadow(0 0 4px #9adcff)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #9adcff) drop-shadow(0 0 10px #9adcff)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#9adcff">e⁻</text><animateMotion dur="6.3s" begin="1.6s" repeatCount="indefinite" path="M-484 132 L-396 132 L-396 -22 L-462 -22 L-462 -132 L-374 -132 L-374 0" calcMode="linear"></animateMotion></g><path d="M308 198 L308 110 L176 110 L176 198 L88 198 L88 264 L-22 264" fill="none" stroke="#3a8dff" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M308 198 L308 110 L176 110 L176 198 L88 198 L88 264 L-22 264" fill="none" stroke="#3a8dff" stroke-width="2.4" stroke-linecap="round" style="animation-duration:7.0s;animation-delay:1.2s;filter:drop-shadow(0 0 4px #3a8dff)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #3a8dff) drop-shadow(0 0 10px #3a8dff)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#3a8dff">e⁻</text><animateMotion dur="7.0s" begin="1.2s" repeatCount="indefinite" path="M308 198 L308 110 L176 110 L176 198 L88 198 L88 264 L-22 264" calcMode="linear"></animateMotion></g><path d="M-132 -264 L-132 -176 L-22 -176 L-22 -22 L-88 -22 L-88 -110 L-242 -110" fill="none" stroke="#32d74b" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M-132 -264 L-132 -176 L-22 -176 L-22 -22 L-88 -22 L-88 -110 L-242 -110" fill="none" stroke="#32d74b" stroke-width="2.4" stroke-linecap="round" style="animation-duration:8.1s;animation-delay:0.3s;filter:drop-shadow(0 0 4px #32d74b)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #32d74b) drop-shadow(0 0 10px #32d74b)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#32d74b">e⁻</text><animateMotion dur="8.1s" begin="0.3s" repeatCount="indefinite" path="M-132 -264 L-132 -176 L-22 -176 L-22 -22 L-88 -22 L-88 -110 L-242 -110" calcMode="linear"></animateMotion></g><path d="M88 242 L88 132 L176 132 L176 264 L286 264 L286 132 L132 132" fill="none" stroke="#ffc83d" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M88 242 L88 132 L176 132 L176 264 L286 264 L286 132 L132 132" fill="none" stroke="#ffc83d" stroke-width="2.4" stroke-linecap="round" style="animation-duration:6.8s;animation-delay:2.6s;filter:drop-shadow(0 0 4px #ffc83d)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #ffc83d) drop-shadow(0 0 10px #ffc83d)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#ffc83d">e⁻</text><animateMotion dur="6.8s" begin="2.6s" repeatCount="indefinite" path="M88 242 L88 132 L176 132 L176 264 L286 264 L286 132 L132 132" calcMode="linear"></animateMotion></g><path d="M484 -44 L396 -44 L396 -154 L308 -154 L308 -88 L154 -88 L154 22" fill="none" stroke="#9adcff" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M484 -44 L396 -44 L396 -154 L308 -154 L308 -88 L154 -88 L154 22" fill="none" stroke="#9adcff" stroke-width="2.4" stroke-linecap="round" style="animation-duration:7.9s;animation-delay:0.1s;filter:drop-shadow(0 0 4px #9adcff)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #9adcff) drop-shadow(0 0 10px #9adcff)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#9adcff">e⁻</text><animateMotion dur="7.9s" begin="0.1s" repeatCount="indefinite" path="M484 -44 L396 -44 L396 -154 L308 -154 L308 -88 L154 -88 L154 22" calcMode="linear"></animateMotion></g><path d="M-528 0 L-396 0 L-396 154 L-462 154 L-462 286 L-352 286 L-352 220" fill="none" stroke="#3a8dff" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M-528 0 L-396 0 L-396 154 L-462 154 L-462 286 L-352 286 L-352 220" fill="none" stroke="#3a8dff" stroke-width="2.4" stroke-linecap="round" style="animation-duration:7.1s;animation-delay:0.8s;filter:drop-shadow(0 0 4px #3a8dff)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #3a8dff) drop-shadow(0 0 10px #3a8dff)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#3a8dff">e⁻</text><animateMotion dur="7.1s" begin="0.8s" repeatCount="indefinite" path="M-528 0 L-396 0 L-396 154 L-462 154 L-462 286 L-352 286 L-352 220" calcMode="linear"></animateMotion></g><path d="M-264 44 L-330 44 L-330 -22 L-484 -22 L-484 -110 L-396 -110 L-396 -264" fill="none" stroke="#32d74b" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M-264 44 L-330 44 L-330 -22 L-484 -22 L-484 -110 L-396 -110 L-396 -264" fill="none" stroke="#32d74b" stroke-width="2.4" stroke-linecap="round" style="animation-duration:6.7s;animation-delay:0.6s;filter:drop-shadow(0 0 4px #32d74b)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #32d74b) drop-shadow(0 0 10px #32d74b)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#32d74b">e⁻</text><animateMotion dur="6.7s" begin="0.6s" repeatCount="indefinite" path="M-264 44 L-330 44 L-330 -22 L-484 -22 L-484 -110 L-396 -110 L-396 -264" calcMode="linear"></animateMotion></g><path d="M220 -88 L220 -198 L330 -198 L330 -88 L484 -88 L484 -176 L352 -176" fill="none" stroke="#ffc83d" stroke-opacity=".16" stroke-width="1.5"></path><path class="trail" pathLength="100" d="M220 -88 L220 -198 L330 -198 L330 -88 L484 -88 L484 -176 L352 -176" fill="none" stroke="#ffc83d" stroke-width="2.4" stroke-linecap="round" style="animation-duration:6.1s;animation-delay:2.0s;filter:drop-shadow(0 0 4px #ffc83d)"></path><g><circle r="4.2" fill="#fff" style="filter:drop-shadow(0 0 5px #ffc83d) drop-shadow(0 0 10px #ffc83d)"></circle><text y="-9" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#ffc83d">e⁻</text><animateMotion dur="6.1s" begin="2.0s" repeatCount="indefinite" path="M220 -88 L220 -198 L330 -198 L330 -88 L484 -88 L484 -176 L352 -176" calcMode="linear"></animateMotion></g></svg></svg>
+
+
+<div class="hero-text" style="position: relative; z-index: 3; flex: 1 1 520px; min-width: 0">
+<span style="display: inline-flex; align-items: center; gap: 10px; background: #ffc83d; color: #010612; padding: 9px 14px; border-radius: 14px; font-weight: 900; font-size: clamp(11px, 3.2vw, 20px); white-space: nowrap; max-width: 100%; gap: 6px; box-sizing: border-box; box-shadow: 0 0 34px rgba(255,200,61,.5)"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="#010612"></path></svg>אקדמיה להנדסאי חשמל ואלקטרוניקה</span>
+<h1 style="margin: 22px 0 0; font-size: clamp(60px, 8vw, 112px); line-height: .95; font-weight: 900; letter-spacing: -2px">מאור מנאי</h1>
+<p style="margin: 18px 0 0; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.15; font-weight: 900">הדרך להצלחה<br><span style="direction: rtl">מ-<span style="color: #32d74b; text-shadow: 0 0 24px rgba(50,215,75,.55)">0</span> ל-<span style="color: #ffc83d; text-shadow: 0 0 24px rgba(255,200,61,.5)">100</span></span></p>
+<p style="margin: 22px 0 0; font-size: 20px; line-height: 1.6; color: #c0d2f1; max-width: 540px">לומדים להבין מעגלים, לפתור שאלות בביטחון ולהגיע מוכנים למבחן – בקורס דיגיטלי, בשיעורים פרטיים או בקבוצה.</p>
+<div class="hero-ctas" style="display: flex; flex-wrap: nowrap; gap: 12px; margin-top: 30px; max-width: 560px">
+<a href="https://my.schooler.biz/s/119709/1787502104986/8dVdBvo" style="flex: 1 1 0; min-width: 0; text-align: center; white-space: nowrap; background: #3a8dff; color: #010612; text-decoration: none; font-weight: 800; font-size: 19px; padding: 16px 14px; border-radius: 14px; box-shadow: 0 0 34px rgba(37,122,253,.45)">לרכישת הקורס</a>
+<a href="https://wa.me/972537107787" style="flex: 1 1 0; min-width: 0; text-align: center; white-space: nowrap; border: 2px solid #ffc83d; color: #ffc83d; text-decoration: none; font-weight: 800; font-size: 19px; padding: 14px 12px; border-radius: 14px">שיחה בוואטסאפ</a>
+</div>
+</div>
+<div class="hero-media" style="z-index: 0; flex: 1 1 380px; min-width: 0; max-width: 540px; margin: 0 auto; position: relative">
+<div class="hero-bg" aria-hidden="true" style="position: absolute; inset: 0; overflow: visible; background: radial-gradient(55% 40% at 55% 25%, rgba(37,122,253,.28), transparent 70%)">
+<div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(58,141,255,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(58,141,255,.10) 1px, transparent 1px); background-size: 40px 40px; -webkit-mask-image: radial-gradient(65% 55% at 50% 38%, #000, transparent 80%); mask-image: radial-gradient(65% 55% at 50% 38%, #000, transparent 80%)"></div>
+</div>
+<div class="photo-wrap" style="position: relative">
+<div aria-hidden="true" style="position: absolute; left: 30%; top: 0; width: 75%; height: 60%; background: radial-gradient(closest-side, rgba(58,141,255,.35), transparent 75%); filter: blur(10px)"></div>
+
+<img class="hero-img" src="images/maor.webp" alt="מאור מנאי מחזיק מחשב נייד עם תרשים מעגל חשמלי" style="position: relative; width: 100%; display: block; filter: drop-shadow(0 24px 40px rgba(0,0,0,.55)) drop-shadow(0 0 1px rgba(154,220,255,.6)); -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent 100%); mask-image: linear-gradient(180deg, #000 80%, transparent 100%)">
+</div>
+<a href="#quiz" class="hero-stick" style="position: absolute; bottom: 60px; right: -8px; background: #ffc83d; color: #010612; text-decoration: none; font-weight: 800; font-size: 18px; padding: 12px 20px; border-radius: 12px; transform: rotate(-3deg); box-shadow: 0 10px 30px rgba(0,0,0,.5)">⏱ נסו את החידה למטה</a>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 24px">
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.3); border-radius: 28px; padding: clamp(28px, 4vw, 52px); display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+<div style="flex: 1 1 260px; min-width: 0">
+<span style="color: #3a8dff; font-weight: 800; font-size: 18px">מי אני</span>
+<h2 style="margin: 8px 0 0; font-size: clamp(34px, 4vw, 52px); font-weight: 900; line-height: 1.05">נעים להכיר,<br>אני <span style="color: #ffc83d">מאור</span></h2>
+</div>
+<div style="flex: 2 1 480px; min-width: 0">
+<p style="margin: 0; font-size: 20px; line-height: 1.75; color: #dce6f8">אני מאור מנאי, מהנדס חשמל ומרצה במכללות להנדסאי חשמל כבר כ-8 שנים. לאורך הדרך ליוויתי מאות סטודנטים, וראיתי שוב ושוב איך סטודנטים חכמים נתקעים – לא כי החומר קשה מדי, אלא כי אף אחד לא הסביר להם אותו בצורה פשוטה, שלב אחרי שלב. בדיוק בשביל זה הקמתי את האקדמיה להנדסאי חשמל ואלקטרוניקה: שיטה שלוקחת אותך מ-0, מהיסודות הכי בסיסיים, ועד 100 – פתרון שאלות ברמת מבחן בביטחון מלא. אצלי לא שואלים "מה הנוסחה?", אלא מבינים למה היא עובדת.</p>
+<div style="margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px">
+<span style="border: 1px solid rgba(37,122,253,.4); color: #3a8dff; padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: 16px">מהנדס חשמל</span>
+<span style="border: 1px solid rgba(255,200,61,.45); color: #ffc83d; padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: 16px">כ-8 שנות הוראה במכללות</span>
+<span style="border: 1px solid rgba(244,255,248,.25); color: #dce6f8; padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: 16px">מאות סטודנטים שליוויתי</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TRACKS -->
+<section id="tracks" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px">
+<h2 style="margin: 0; font-size: clamp(34px, 4vw, 52px); font-weight: 900">בחרו את המסלול שלכם</h2>
+<p style="margin: 12px 0 40px; font-size: 19px; color: #c0d2f1">שלוש דרכים ללמוד – אותה שיטה.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px">
+<div style="background: #03112e; border: 2px solid #3a8dff; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 0 40px rgba(37,122,253,.18)">
+<span style="align-self: flex-start; background: #3a8dff; color: #010612; font-weight: 800; font-size: 14px; padding: 4px 12px; border-radius: 999px">קורס דיגיטלי</span>
+<h3 style="margin: 0; font-size: 28px; font-weight: 900">לומדים בקצב שלכם</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c0d2f1">שיעורים מוקלטים שכוללים תרגולים ומבחנים – זמינים מכל מקום, בקצב שלכם.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="background: rgba(50,215,75,.12); color: #32d74b; font-weight: 700; font-size: 15px; padding: 5px 12px; border-radius: 999px">כ-20 פרקים</span><span style="background: rgba(50,215,75,.12); color: #32d74b; font-weight: 700; font-size: 15px; padding: 5px 12px; border-radius: 999px">כ-200 דקות</span><span style="background: rgba(255,200,61,.14); color: #ffc83d; font-weight: 700; font-size: 15px; padding: 5px 12px; border-radius: 999px">מתעדכן כל הזמן</span><span style="background: rgba(255,200,61,.14); color: #ffc83d; font-weight: 700; font-size: 15px; padding: 5px 12px; border-radius: 999px">קבוצת וואטסאפ לרוכשי הקורס</span><span style="background: rgba(255,200,61,.14); color: #ffc83d; font-weight: 700; font-size: 15px; padding: 5px 12px; border-radius: 999px">זמין לשאלות גם אחרי הקורס</span></div>
+<div style="font-size: 34px; font-weight: 900; color: #3a8dff; margin-top: auto"><span dir="ltr">₪1,200</span></div>
+<a href="https://my.schooler.biz/s/119709/1787502104986/8dVdBvo" style="background: #3a8dff; color: #010612; text-decoration: none; text-align: center; font-weight: 800; font-size: 18px; padding: 14px; border-radius: 12px">לרכישה עכשיו</a>
+</div>
+<div style="background: #03112e; border: 2px solid rgba(244,255,248,.16); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start; background: rgba(255,200,61,.15); color: #ffc83d; font-weight: 800; font-size: 14px; padding: 4px 12px; border-radius: 999px">פרטני / קבוצה</span>
+<h3 style="margin: 0; font-size: 28px; font-weight: 900">שיעורים עם מורה</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c0d2f1">תגבור אישי או בקבוצה קטנה, לפי הנקודות שבהן אתם נתקעים.</p>
+<div style="font-size: 34px; font-weight: 900; color: #ffc83d; margin-top: auto"><span dir="ltr">₪180</span> <span style="font-size: 18px; font-weight: 700; color: #c0d2f1">ל-45 דקות</span></div>
+<a href="https://wa.me/972537107787" style="border: 2px solid #ffc83d; color: #ffc83d; text-decoration: none; text-align: center; font-weight: 800; font-size: 18px; padding: 12px; border-radius: 12px">תיאום בוואטסאפ</a>
+</div>
+<div style="background: #03112e; border: 2px solid rgba(244,255,248,.16); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start; background: rgba(37,122,253,.12); color: #3a8dff; font-weight: 800; font-size: 14px; padding: 4px 12px; border-radius: 999px">הכנה לוועדה</span>
+<h3 style="margin: 0; font-size: 28px; font-weight: 900">מגיעים מוכנים למבחני הוועדה</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c0d2f1">חזרה ממוקדת למבחני ועדה: 60 דקות של תרגול ופתירת מבחנים.</p>
+<div style="font-size: 34px; font-weight: 900; color: #3a8dff; margin-top: auto"><span dir="ltr">₪280</span> <span style="font-size: 18px; font-weight: 700; color: #c0d2f1">ל-60 דקות</span></div>
+<a href="#contact" style="border: 2px solid #3a8dff; color: #3a8dff; text-decoration: none; text-align: center; font-weight: 800; font-size: 18px; padding: 12px; border-radius: 12px">השאירו פרטים</a>
+</div>
+</div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px">
+<div style="background: #020c22; border: 2px solid rgba(37,122,253,.5); border-radius: 32px; padding: clamp(24px, 4vw, 48px); box-shadow: 0 0 60px rgba(37,122,253,.15)">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<span style="background: #3a8dff; color: #010612; font-weight: 900; font-size: 26px; padding: 8px 22px; border-radius: 14px">⚡ חידת חשמל</span>
+<span style="background: #ffc83d; color: #010612; font-weight: 800; font-size: 20px; padding: 8px 18px; border-radius: 12px; transform: rotate(-3deg)">⏱ יש לך 60 שניות</span>
+</div>
+<h2 style="margin: 24px 0 24px; font-size: clamp(36px, 5vw, 64px); font-weight: 900; line-height: 1.05">מהו המתח בין <span style="color: #3a8dff">A</span> ל-<span style="color: #ffc83d">B</span>?</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+<img src="images/quiz.jpg" alt="מעגל: מקור 100V, R1=4Ω בטור, ואחריו R2=80Ω במקביל ל-R3+R4 (10Ω+10Ω). A ו-B משני צידי R2" style="flex: 1 1 420px; min-width: 0; width: 100%; border-radius: 20px; display: block">
+<div style="flex: 1 1 360px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+
+<button type="button" class="ans" data-k="A"><span class="k">A</span><span style="direction: ltr">80V</span></button>
+
+<button type="button" class="ans" data-k="B"><span class="k">B</span><span style="direction: ltr">40V</span></button>
+
+<button type="button" class="ans" data-k="C"><span class="k">C</span><span style="direction: ltr">44V</span></button>
+
+<button type="button" class="ans" data-k="D"><span class="k">D</span><span style="direction: ltr">50V</span></button>
+
+<div style="grid-column: 1 / -1; font-size: 18px; line-height: 1.6; color: #c0d2f1; min-height: 60px">
+<span id="q-intro">בחרו תשובה כדי לבדוק את עצמכם.</span>
+<span id="q-right" hidden><strong style="color: #32d74b; font-size: 22px">נכון! 80V.</strong><br>R3+R4 = 20Ω, במקביל ל-R2 = 16Ω. ההתנגדות הכוללת 20Ω, הזרם 5A, ולכן U<sub>AB</sub> = 5A × 16Ω = 80V.</span>
+<span id="q-wrong" hidden><strong style="color: #ffc83d; font-size: 22px">כמעט… נסו שוב.</strong><br>רמז: חשבו קודם את R3+R4, ואז את החיבור המקבילי עם R2.</span>
+</div>
+<a href="#tracks" style="grid-column: 1 / -1; background: #ffc83d; color: #010612; text-decoration: none; text-align: center; font-weight: 800; font-size: 20px; padding: 16px; border-radius: 14px">לפתור כאלה בקלות? לקורס ←</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px">
+<h2 style="margin: 0; font-size: clamp(34px, 4vw, 52px); font-weight: 900">תוכנית הלימודים</h2>
+<p style="margin: 12px 0 40px; font-size: 19px; color: #c0d2f1">מהיסודות ועד שאלות ברמת מבחן · כ-20 פרקים · כ-200 דקות · מתעדכן ומתחדש כל הזמן.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px">
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">01</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">מושגי יסוד</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">02</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">התנגדות חשמלית</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">03</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">חוק אוהם</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">04</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">המעגל החשמלי</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">05</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">הספק חשמלי</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">06</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">תרגול שאלות עד פרק 5</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">07</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">סוללות ותאי מתח</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">08</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">חוקי קירכהוף</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">09</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">גשר ויטסטון ופוטנציומטר</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">10</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">העברת הספק מקסימלי לעומס</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">11</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">שיטת הפיכת מקורות</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">12</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">שיטת זרמי חוגים</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">13</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">שיטת מציאת פוטנציאלים</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">14</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">שיטת מתחי צמתים</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">15</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">שיטת מילמן</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">16</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">שיטת תבנין</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">17</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">שיטת נורטון</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">18</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">חזרה תרגילי DC</div>
+</div>
+
+<div style="background: #03112e; border: 1px solid rgba(37,122,253,.25); border-radius: 20px; padding: 16px 20px; display: flex; gap: 16px; align-items: center">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: rgba(50,215,75,.14); color: #32d74b; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; direction: ltr">19</span>
+<div style="font-weight: 800; font-size: 19px; line-height: 1.35; align-self: center">אותות</div>
+</div>
+
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px">
+<h2 style="margin: 0 0 40px; font-size: clamp(34px, 4vw, 52px); font-weight: 900">מה התלמידים אומרים</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px">
+<figure style="margin: 0; background: #03112e; border: 1px solid rgba(255,200,61,.3); border-radius: 22px; padding: 28px"><div style="color: #ffc83d; font-size: 48px; line-height: .6; font-weight: 900">״</div><blockquote style="margin: 10px 0 18px; font-size: 18px; line-height: 1.6">מאור היה מרצה שלי לאלקטרוניקה במכללה. מאור מרצה בחסד, מעביר את הנלמד עם אכפתיות ורצון שהסטודנטים יבינו כל דבר לעומק – וכל זאת עם חיוך. הקורס מתאים למי שרוצה להתחיל מהבסיס ולהגיע לרמות הגבוהות ביותר. בזכות הנתינה, האכפתיות והרצון ללמד ידע הרבה מעבר למה שצריך, התקבלתי לחברת הייטק נחשבת.</blockquote><figcaption style="font-weight: 800">אורי כהן · <span style="color: #98acd0; font-weight: 500">סטודנט לשעבר</span></figcaption></figure>
+<figure style="margin: 0; background: #03112e; border: 1px solid rgba(255,200,61,.3); border-radius: 22px; padding: 28px"><div style="color: #ffc83d; font-size: 48px; line-height: .6; font-weight: 900">״</div><blockquote style="margin: 10px 0 18px; font-size: 18px; line-height: 1.6">מניסיון אישי אני ממליץ עליו בחום. מאור מסביר בצורה נלהבת ומקצועית את החומר – רואים שהבן אדם אוהב את מה שהוא עושה.</blockquote><figcaption style="font-weight: 800">שמואל ביטון · <span style="color: #98acd0; font-weight: 500">מתוך פייסבוק</span></figcaption></figure>
+<figure style="margin: 0; background: #03112e; border: 1px solid rgba(255,200,61,.3); border-radius: 22px; padding: 28px"><div style="color: #ffc83d; font-size: 48px; line-height: .6; font-weight: 900">״</div><blockquote style="margin: 10px 0 18px; font-size: 18px; line-height: 1.6">הכי מומלץ שיש!!</blockquote><figcaption style="font-weight: 800">עידן גזית · <span style="color: #98acd0; font-weight: 500">מתוך פייסבוק</span></figcaption></figure>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="max-width: 900px; margin: 0 auto; padding: 72px 24px">
+<h2 style="margin: 0 0 20px; font-size: clamp(34px, 4vw, 52px); font-weight: 900">שאלות נפוצות</h2>
+<details><summary>למי זה מתאים?</summary><p style="margin: 12px 0 0; font-size: 18px; line-height: 1.6; color: #c0d2f1">לכל מי שרוצה לדעת את תורת החשמל מההתחלה, בצורה קלה ומובנת. בעיקר לסטודנטים להנדסאי חשמל ואלקטרוניקה – כולל ליווי למבחנים ולבחנים.</p></details>
+<details><summary>צריך רקע קודם?</summary><p style="margin: 12px 0 0; font-size: 18px; line-height: 1.6; color: #c0d2f1">אין צורך בניסיון קודם – לומדים הכל מ-0 ל-100!</p></details>
+<details><summary>כמה זמן נמשך הקורס?</summary><p style="margin: 12px 0 0; font-size: 18px; line-height: 1.6; color: #c0d2f1">הקורס כולל כ-20 פרקים, כ-200 דקות של תוכן, והוא מתעדכן ומתחדש כל הזמן.</p></details>
+<details><summary>כמה זה עולה?</summary><p style="margin: 12px 0 0; font-size: 18px; line-height: 1.6; color: #c0d2f1">קורס דיגיטלי: 1,200 ₪ – כולל את כל השיעורים, תרגולים ומבחנים. שיעור פרטי: 180 ₪ ל-45 דקות. חזרה ממוקדת למבחני ועדה: 280 ₪ ל-60 דקות של תרגול ופתירת מבחנים.</p></details>
+<details><summary>יש ליווי גם אחרי הקורס?</summary><p style="margin: 12px 0 0; font-size: 18px; line-height: 1.6; color: #c0d2f1">כן! אני זמין עבורכם גם אחרי הקורס, לכל שאלה.</p></details>
+<details><summary>איך מתאמים שיעור פרטי?</summary><p style="margin: 12px 0 0; font-size: 18px; line-height: 1.6; color: #c0d2f1">שולחים הודעה בוואטסאפ או משאירים פרטים בטופס – ונחזור אליכם לתיאום.</p></details>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 96px">
+<div style="background: linear-gradient(135deg, #3a8dff, #2fb5d8 55%, #32d74b); border-radius: 32px; padding: clamp(28px, 5vw, 56px); color: #010612; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<div style="flex: 1 1 340px; min-width: 0">
+<h2 style="margin: 0; font-size: clamp(34px, 4vw, 52px); font-weight: 900; line-height: 1.05">מוכנים להבין חשמל באמת?</h2>
+<p style="margin: 14px 0 22px; font-size: 19px; line-height: 1.6; font-weight: 500">השאירו פרטים לשיחת ייעוץ, או כתבו לי ישר בוואטסאפ.</p>
+<a href="https://wa.me/972537107787" style="display: inline-flex; align-items: center; gap: 10px; background: #010612; color: #3a8dff; text-decoration: none; font-weight: 800; font-size: 19px; padding: 14px 24px; border-radius: 14px">וואטסאפ עכשיו</a>
+</div>
+<form id="lead" style="flex: 1 1 380px; min-width: 0; background: #010612; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 14px; color: #f5f8ff">
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700">שם מלא<input type="text" name="name" required autocomplete="name" style="background: #061a40; border: 1px solid rgba(37,122,253,.35); border-radius: 12px; padding: 14px; color: #f5f8ff"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700">טלפון<input type="tel" name="phone" required autocomplete="tel" style="background: #061a40; border: 1px solid rgba(37,122,253,.35); border-radius: 12px; padding: 14px; color: #f5f8ff; direction: ltr; text-align: right"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700">מה מעניין אותך?<select name="track" style="background: #061a40; border: 1px solid rgba(37,122,253,.35); border-radius: 12px; padding: 14px; color: #f5f8ff"><option>קורס דיגיטלי</option><option>שיעורים פרטיים / קבוצה</option><option>חזרה ממוקדת למבחני ועדה</option></select></label>
+<button type="submit" style="background: #ffc83d; color: #010612; border: 0; border-radius: 14px; padding: 16px; font: 800 20px Heebo, sans-serif; cursor: pointer; margin-top: 6px">שלחו לי פרטים</button>
+</form>
+</div>
+</section>
+
+<footer style="border-top: 1px solid rgba(244,255,248,.1); padding: 28px 24px; text-align: center; color: #8597ba; font-size: 15px">© מאור מנאי – אקדמיה להנדסאי חשמל ואלקטרוניקה · <a href="https://wa.me/972537107787" style="color: #8597ba">וואטסאפ</a> · <a href="tel:0537107787" style="color: #8597ba; direction: ltr">053-7107787</a></footer>
+</div>
+<script>
+(function(){
+  var menu=document.getElementById('menu');
+  document.querySelectorAll('[data-toggle-menu]').forEach(function(b){b.addEventListener('click',function(){menu.hidden=!menu.hidden;});});
+  document.querySelectorAll('[data-close-menu]').forEach(function(b){b.addEventListener('click',function(){menu.hidden=true;});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')menu.hidden=true;});
+  var btns=document.querySelectorAll('.ans[data-k]');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var k=b.getAttribute('data-k'), ok=k==='A';
+    btns.forEach(function(x){var xk=x.getAttribute('data-k');x.className='ans'+(xk==='A'?' ok':(xk===k?' bad':''));});
+    document.getElementById('q-intro').hidden=true;
+    document.getElementById('q-right').hidden=!ok;
+    document.getElementById('q-wrong').hidden=ok;
+  });});
+  var f=document.getElementById('lead');
+  if(f){f.addEventListener('submit',function(e){e.preventDefault();
+    var d=new FormData(f);
+    var t='היי מאור, אשמח לפרטים 🙂\nשם: '+d.get('name')+'\nטלפון: '+d.get('phone')+'\nמתעניין/ת ב: '+d.get('track');
+    window.open('https://wa.me/972537107787?text='+encodeURIComponent(t),'_blank');
+  });}
+})();
+</script>
+</body>
+</html>
